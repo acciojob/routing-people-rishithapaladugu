@@ -7,26 +7,16 @@ function UserDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true); 
-    setUser(null);  
-
-    setTimeout(() => {
-      fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setUser(data);
-          setLoading(false);
-        });
-    }, 300);
+    setLoading(true);
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        setLoading(false);
+      });
   }, [id]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user) {
-    return <div>No user found</div>;
-  }
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div>
@@ -35,7 +25,8 @@ function UserDetails() {
       <p>Email: {user.email}</p>
       <p>Phone: {user.phone}</p>
       <p>Website: {user.website}</p>
-      <Link to="/">← Back to User List</Link>
+
+      <Link to="/">Back to User List</Link>
     </div>
   );
 }
