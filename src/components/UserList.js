@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function UserList() {
+const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -22,6 +22,6 @@ function UserList() {
       </ul>
     </div>
   );
-}
+};
 
 export default UserList;
